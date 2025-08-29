@@ -36,7 +36,7 @@ export function Header() {
               aria-label="Call us at 91515 77755"
             >
               <Phone className="w-4 h-4 flex-shrink-0" />
-              <span className="whitespace-nowrap">91515 77755</span>
+              <span className="whitespace-nowrap">9151577755</span>
             </a>
             <a 
               href="tel:8383048884" 
@@ -44,7 +44,7 @@ export function Header() {
               aria-label="Call us at 8383 048884"
             >
               <Phone className="w-4 h-4 flex-shrink-0" />
-              <span className="whitespace-nowrap">8383 048884</span>
+              <span className="whitespace-nowrap">8383048884</span>
             </a>
             <a 
               href="mailto:pravinbalda79@gmail.com" 
