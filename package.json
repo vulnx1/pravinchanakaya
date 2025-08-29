@@ -1,5 +1,6 @@
 {
-      "name": "Chanakya Cement Products Website",
+      "$schema": "https://json.schemastore.org/package.json",
+      "name": "chanakya-cement-products-website",
       "version": "0.1.0",
       "private": true,
       "dependencies": {

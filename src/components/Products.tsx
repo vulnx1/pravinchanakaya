@@ -28,7 +28,7 @@ const products = [
   {
     id: 2,
     name: "RCC Compound Wall",
-    price: "₹150",
+    price: "₹120",
     unit: "per sq ft",
     image:img4,
     description: "Robust compound walls providing security and aesthetic appeal",
@@ -37,7 +37,7 @@ const products = [
   {
     id: 3,
     name: "Precast Room Units",
-    price: "₹25,000",
+    price: "₹120",
     unit: "per unit",
     images: [
       img1,
@@ -48,7 +48,7 @@ const products = [
   {
     id: 4,
     name: "Folding Compound Wall",
-    price: "₹180",
+    price: "₹120",
     unit: "per sq ft",
     image: img8,
     description: "Innovative folding walls for flexible space management",
@@ -57,7 +57,7 @@ const products = [
   {
     id: 5,
     name: "Decorative Wall Panels",
-    price: "₹200",
+    price: "₹120",
     unit: "per sq ft",
     image: img7,
     description: "Aesthetic decorative panels for interior and exterior applications",
@@ -66,7 +66,7 @@ const products = [
   {
     id: 6,
     name: "Security Wall Systems",
-    price: "₹220",
+    price: "₹120",
     unit: "per sq ft",
     image: img9,
     description: "High-security wall systems for critical infrastructure and facilities",
