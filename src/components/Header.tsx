@@ -29,18 +29,35 @@ export function Header() {
       {/* Contact Info Bar */}
       <div className="bg-gray-800 text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-sm">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span>91515 77755, 8383 048884</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              <span>pravinbalda79@gmail.com</span>
-            </div>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <a 
+              href="tel:9151577755" 
+              className="flex items-center gap-2 hover:text-orange-400 transition-colors"
+              aria-label="Call us at 91515 77755"
+            >
+              <Phone className="w-4 h-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">91515 77755</span>
+            </a>
+            <a 
+              href="tel:8383048884" 
+              className="flex items-center gap-2 hover:text-orange-400 transition-colors"
+              aria-label="Call us at 8383 048884"
+            >
+              <Phone className="w-4 h-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">8383 048884</span>
+            </a>
+            <a 
+              href="mailto:pravinbalda79@gmail.com" 
+              className="flex items-center gap-2 hover:text-orange-400 transition-colors break-words"
+              aria-label="Email us at pravinbalda79@gmail.com"
+            >
+              <Mail className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden sm:inline">pravinbalda79@gmail.com</span>
+              <span className="sm:hidden">Email Us</span>
+            </a>
           </div>
-          <div className="flex items-center gap-2">
-            <FileText className="w-4 h-4" />
+          <div className="hidden sm:flex items-center gap-2 text-gray-300">
+            <FileText className="w-4 h-4 flex-shrink-0" />
             <span>GST: Registered</span>
           </div>
         </div>
