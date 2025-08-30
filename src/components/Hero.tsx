@@ -90,13 +90,13 @@ export function Hero() {
       {/* Navigation Arrows */}
       <button
         onClick={prevImage}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
       >
         <ChevronLeft className="w-6 h-6 text-white" />
       </button>
       <button
         onClick={nextImage}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
       >
         <ChevronRight className="w-6 h-6 text-white" />
       </button>
@@ -137,7 +137,7 @@ export function Hero() {
             </Button>
             <Button 
               onClick={() => scrollToSection('products')}
-              className="bg-orange-600 hover:bg-blue-700 text-white text-lg px-8 py-3"
+              className="bg-blue-600 hover:bg-cyan-600 text-white text-lg px-8 py-3"
             >
               View Products
             </Button>
