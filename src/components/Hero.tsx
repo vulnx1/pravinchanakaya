@@ -16,6 +16,9 @@ export function Hero() {
     projects: 0,
     clients: 0
   });
+  
+  // Shared styles for CTA buttons to ensure identical color and sizing
+  const ctaButtonClass = "bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -131,13 +134,13 @@ export function Hero() {
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3"
+              className={ctaButtonClass}
             >
               Get Quote
             </Button>
             <Button 
               onClick={() => scrollToSection('products')}
-              className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3"
+              className={ctaButtonClass}
             >
               View Products
             </Button>
