@@ -15,14 +15,40 @@ export function Contact() {
     subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<{ email?: string; phone?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
 
+  const validateEmail = (email: string) => {
+    // Simple and practical email regex
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    return re.test(email);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
+
+    if (name === 'phone') {
+      // Keep only digits and limit to 10
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+      value = digitsOnly;
+      setErrors(prev => ({
+        ...prev,
+        phone: digitsOnly.length === 0 || digitsOnly.length === 10 ? undefined : 'Phone number must be exactly 10 digits'
+      }));
+    }
+
+    if (name === 'email') {
+      setErrors(prev => ({
+        ...prev,
+        email: value.length === 0 || validateEmail(value) ? undefined : 'Please enter a valid email address'
+      }));
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -30,6 +56,20 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
+    // Final client-side validation before submit
+    const phoneValid = /^\d{10}$/.test(formData.phone);
+    const emailValid = validateEmail(formData.email);
+
+    const newErrors: { email?: string; phone?: string } = {};
+    if (!phoneValid) newErrors.phone = 'Phone number must be exactly 10 digits';
+    if (!emailValid) newErrors.email = 'Please enter a valid email address';
+    setErrors(prev => ({ ...prev, ...newErrors }));
+
+    if (!phoneValid || !emailValid) {
+      setIsSubmitting(false);
+      setSubmitStatus({ type: 'error', message: 'Please fix the highlighted errors before submitting.' });
+      return;
+    }
     
     try {
       const response = await sendContactEmail(formData as ContactFormData);
@@ -202,12 +242,21 @@ export function Contact() {
                         id="phone"
                         name="phone"
                         type="tel"
+                        inputMode="numeric"
+                        pattern="\\d{10}"
+                        minLength={10}
+                        maxLength={10}
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Your phone number"
-                        className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500 focus:ring-cyan-500 transition-colors duration-300"
+                        aria-invalid={!!errors.phone}
+                        title="Enter exactly 10 digits"
+                        className={`bg-gray-800/50 text-white placeholder-gray-400 focus:border-cyan-500 focus:ring-cyan-500 transition-colors duration-300 ${errors.phone ? 'border-red-500/70' : 'border-gray-600'}`}
                       />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-400">{errors.phone}</p>
+                      )}
                     </div>
                   </div>
 
@@ -217,26 +266,17 @@ export function Contact() {
                       id="email"
                       name="email"
                       type="email"
+                      pattern="[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}"
                       required
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Your email address"
-                      className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500 focus:ring-cyan-500 transition-colors duration-300"
+                      aria-invalid={!!errors.email}
+                      className={`bg-gray-800/50 text-white placeholder-gray-400 focus:border-cyan-500 focus:ring-cyan-500 transition-colors duration-300 ${errors.email ? 'border-red-500/70' : 'border-gray-600'}`}
                     />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="subject" className="text-gray-300">Subject *</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      placeholder="Subject of your inquiry"
-                      className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-500 focus:ring-cyan-500 transition-colors duration-300"
-                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
