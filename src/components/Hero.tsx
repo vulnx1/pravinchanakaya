@@ -137,7 +137,7 @@ export function Hero() {
             </Button>
             <Button 
               onClick={() => scrollToSection('products')}
-              className="bg-blue-600 hover:bg-cyan-600 text-white text-lg px-8 py-3"
+              className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3"
             >
               View Products
             </Button>

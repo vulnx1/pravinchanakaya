@@ -123,12 +123,12 @@ export function Contact() {
                       <h4 className="font-bold text-white mb-2">Phone Numbers</h4>
                       <p className="text-gray-300">
                         <a href="tel:919151577755" className="hover:text-cyan-400 transition-colors duration-300">
-                          91515 77755
+                          9151577755
                         </a>
                       </p>
                       <p className="text-gray-300">
                         <a href="tel:918383048884" className="hover:text-cyan-400 transition-colors duration-300">
-                          8383 048884
+                          8383048884
                         </a>
                       </p>
                     </div>
