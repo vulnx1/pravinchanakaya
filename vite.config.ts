@@ -5,6 +5,8 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  // Serve static assets from src/public at the site root
+  publicDir: 'src/public',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
