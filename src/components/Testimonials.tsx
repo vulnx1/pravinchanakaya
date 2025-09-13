@@ -6,30 +6,30 @@ import { Button } from './ui/button';
 const testimonials = [
   {
     id: 1,
-    name: "Rajesh Kumar",
+    name: "Sejal Singh",
     company: "Kumar Construction Ltd.",
     designation: "Project Manager",
-    rating: 5,
+    rating: 4.5,
     text: "Chanakya Cement Products delivered exceptional quality RCC precast walls for our residential project. The installation was quick and the durability is outstanding. Highly recommended for any construction project.",
-    project: "Green Valley Residency"
+    project: "Green Valley Residency",
   },
   {
     id: 2,
     name: "Priya Sharma",
     company: "Sharma Builders",
     designation: "Managing Director",
-    rating: 5,
+    rating: 4,
     text: "We've been using Chanakya's compound walls for over 3 years now. Their products are cost-effective, durable, and always delivered on time. The team is professional and supportive.",
-    project: "Commercial Complex, Varanasi"
+    project: "Commercial Complex, Varanasi",
   },
   {
     id: 3,
     name: "Amit Singh",
     company: "Singh Infrastructure",
     designation: "Site Engineer",
-    rating: 5,
+    rating: 4,
     text: "The decorative wall panels from Chanakya transformed our office building facade. Excellent finish quality and the installation team was knowledgeable. Will definitely use their services again.",
-    project: "Tech Park Phase-II"
+    project: "Tech Park Phase-II",
   },
   {
     id: 4,
@@ -38,16 +38,16 @@ const testimonials = [
     designation: "Architect",
     rating: 5,
     text: "Quality that speaks for itself! The precast room units saved us significant time and costs. The precision and finishing are remarkable. Chanakya is our go-to supplier for all RCC requirements.",
-    project: "Hospital Complex Project"
+    project: "Hospital Complex Project",
   },
   {
     id: 5,
     name: "Sunita Agarwal",
     company: "Agarwal Constructions",
     designation: "Director",
-    rating: 5,
+    rating: 4,
     text: "Impressed with the security wall systems for our industrial project. The strength and durability exceeded our expectations. Professional service from inquiry to installation.",
-    project: "Industrial Park, Mirzapur"
+    project: "Industrial Park, Mirzapur",
   }
 ];
 
