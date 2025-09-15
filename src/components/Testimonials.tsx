@@ -54,6 +54,9 @@ const testimonials = [
 export function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [swipeOffset, setSwipeOffset] = useState(0);
 
   useEffect(() => {
     if (!isAutoPlay) return;
@@ -78,6 +81,34 @@ export function Testimonials() {
   const goToTestimonial = (index: number) => {
     setCurrentTestimonial(index);
     setIsAutoPlay(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setSwipeOffset(0);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const currentX = e.targetTouches[0].clientX;
+    setTouchEnd(currentX);
+    // Calculate swipe offset for visual feedback
+    setSwipeOffset(currentX - touchStart);
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStart - touchEnd;
+    const swipeThreshold = 50; // Minimum distance to trigger swipe
+    
+    if (swipeDistance > swipeThreshold) {
+      // Swipe left - go to next testimonial
+      nextTestimonial();
+    } else if (swipeDistance < -swipeThreshold) {
+      // Swipe right - go to previous testimonial
+      prevTestimonial();
+    }
+    
+    // Reset swipe offset
+    setSwipeOffset(0);
   };
 
   const renderStars = (rating: number) => {
@@ -109,8 +140,17 @@ export function Testimonials() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Main Testimonial Display */}
-          <div className="relative">
-            <Card className="bg-gradient-to-br from-slate-800/80 to-gray-800/80 backdrop-blur-sm border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 shadow-2xl">
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(${swipeOffset}px)` }}
+            >
+              <Card className="bg-gradient-to-br from-slate-800/80 to-gray-800/80 backdrop-blur-sm border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 shadow-2xl">
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   {/* Quote Icon */}
@@ -153,7 +193,8 @@ export function Testimonials() {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
 
             {/* Navigation Arrows */}
             <Button

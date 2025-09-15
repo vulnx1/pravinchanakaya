@@ -37,7 +37,7 @@ export function Hero() {
       const interval = setInterval(() => {
         const progress = step / steps;
         setAnimatedStats({
-          experience: Math.floor(15 * progress),
+          experience: Math.floor(18 * progress),
           projects: Math.floor(500 * progress),
           clients: Math.floor(200 * progress)
         });
@@ -45,7 +45,7 @@ export function Hero() {
         step++;
         if (step > steps) {
           clearInterval(interval);
-          setAnimatedStats({ experience: 15, projects: 500, clients: 200 });
+          setAnimatedStats({ experience: 18, projects: 500, clients: 200 });
         }
       }, stepDuration);
     };
