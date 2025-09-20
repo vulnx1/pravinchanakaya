@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
@@ -57,6 +57,16 @@ export function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [swipeOffset, setSwipeOffset] = useState(0);
+
+  // Format number in English (en-IN) format
+  const formatNumber = useCallback((number: number): string => {
+    try {
+      return new Intl.NumberFormat('en-IN').format(number);
+    } catch (error) {
+      console.error('Error formatting number:', error);
+      return number.toString();
+    }
+  }, []);
   
   // Swipe handlers
   const handlers = useSwipeable({
