@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
+import { useSwipeable } from 'react-swipeable';
+import { formatNumber } from '../utils/numberFormat';
 
 const testimonials = [
   {
@@ -54,9 +56,20 @@ const testimonials = [
 export function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [swipeOffset, setSwipeOffset] = useState(0);
+  
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextTestimonial(),
+    onSwipedRight: () => prevTestimonial(),
+    onSwiping: (eventData) => {
+      setSwipeOffset(eventData.deltaX);
+    },
+    onSwiped: () => {
+      setSwipeOffset(0);
+    },
+    trackMouse: true
+  });
 
   useEffect(() => {
     if (!isAutoPlay) return;
@@ -83,33 +96,6 @@ export function Testimonials() {
     setIsAutoPlay(false);
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-    setSwipeOffset(0);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const currentX = e.targetTouches[0].clientX;
-    setTouchEnd(currentX);
-    // Calculate swipe offset for visual feedback
-    setSwipeOffset(currentX - touchStart);
-  };
-
-  const handleTouchEnd = () => {
-    const swipeDistance = touchStart - touchEnd;
-    const swipeThreshold = 50; // Minimum distance to trigger swipe
-    
-    if (swipeDistance > swipeThreshold) {
-      // Swipe left - go to next testimonial
-      nextTestimonial();
-    } else if (swipeDistance < -swipeThreshold) {
-      // Swipe right - go to previous testimonial
-      prevTestimonial();
-    }
-    
-    // Reset swipe offset
-    setSwipeOffset(0);
-  };
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -140,15 +126,11 @@ export function Testimonials() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Main Testimonial Display */}
-          <div 
-            className="relative overflow-hidden"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative overflow-hidden">
             <div 
               className="transition-transform duration-300 ease-out"
               style={{ transform: `translateX(${swipeOffset}px)` }}
+              {...handlers}
             >
               <Card className="bg-gradient-to-br from-slate-800/80 to-gray-800/80 backdrop-blur-sm border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 shadow-2xl">
               <CardContent className="p-8 md:p-12">
@@ -195,24 +177,6 @@ export function Testimonials() {
               </CardContent>
               </Card>
             </div>
-
-            {/* Navigation Arrows */}
-            <Button
-              onClick={prevTestimonial}
-              variant="outline"
-              size="icon"
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-500 transition-all duration-300"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={nextTestimonial}
-              variant="outline"
-              size="icon"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800/80 border-gray-600 text-white hover:bg-gray-700 hover:border-yellow-500 transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
           </div>
 
           {/* Testimonial Indicators */}
@@ -232,16 +196,18 @@ export function Testimonials() {
 
           {/* Statistics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">200+</div>
+            <div className="text-center relative">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">{formatNumber(1000)}+</div>
               <div className="text-gray-300">Happy Clients</div>
+              <div className="hidden md:block absolute top-0 right-0 h-3/4 w-0.5 bg-gradient-to-b from-transparent via-gray-400 to-transparent transform translate-y-1/4"></div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">98%</div>
+            <div className="text-center relative">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">{formatNumber(98)}%</div>
               <div className="text-gray-300">Client Satisfaction</div>
+              <div className="hidden md:block absolute top-0 right-0 h-3/4 w-0.5 bg-gradient-to-b from-transparent via-gray-400 to-transparent transform translate-y-1/4"></div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">15+</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">{formatNumber(18)}+</div>
               <div className="text-gray-300">Years Experience</div>
             </div>
           </div>

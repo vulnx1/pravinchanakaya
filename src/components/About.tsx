@@ -56,7 +56,7 @@ export function About() {
               evolving needs of modern infrastructure.
             </p>
             <p className="text-gray-300 mb-8 leading-relaxed hover:text-gray-100 transition-colors duration-300">
-              With over 15 years of experience in the industry, we have established ourselves 
+              With over 18 years of experience in the industry, we have established ourselves 
               as a trusted partner for residential, commercial, and industrial construction projects 
               across Uttar Pradesh and beyond.
             </p>

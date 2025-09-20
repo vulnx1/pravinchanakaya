@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, FileText } from 'lucide-react';
-
+  
 export function Footer() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -165,3 +165,4 @@ export function Footer() {
     </footer>
   );
 }
+

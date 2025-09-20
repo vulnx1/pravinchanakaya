@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Shield, Clock, DollarSign } from 'lucide-react';
 import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useSwipeable } from 'react-swipeable';
 import React from 'react';
 const heroImages = [
   "https://images.unsplash.com/photo-1724210295814-9a857e03b424?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25jcmV0ZSUyMHByZWNhc3QlMjB3YWxsJTIwY29uc3RydWN0aW9ufGVufDF8fHx8MTc1NjEyNTkyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -62,6 +63,13 @@ export function Hero() {
     setCurrentImage((prev) => (prev - 1 + heroImages.length) % heroImages.length);
   };
 
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextImage(),
+    onSwipedRight: () => prevImage(),
+    trackMouse: true
+  });
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -70,7 +78,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative h-screen overflow-hidden">
+    <section id="home" className="relative h-screen overflow-hidden" {...handlers}>
       {/* Image Slideshow */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
@@ -90,19 +98,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevImage}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
-      >
-        <ChevronLeft className="w-6 h-6 text-white" />
-      </button>
-      <button
-        onClick={nextImage}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors"
-      >
-        <ChevronRight className="w-6 h-6 text-white" />
-      </button>
+      {/* Navigation handled by swipe gestures */}
 
       {/* Content */}
       <div className="relative z-20 h-full flex items-center">
@@ -185,3 +181,6 @@ export function Hero() {
     </section>
   );
 }
+
+
+
