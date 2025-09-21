@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Priya Sharma",
+    name: "Brijesh Sharma",
     company: "Sharma Builders",
     designation: "Managing Director",
     rating: 4,
