@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Star, Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
 import { useSwipeable } from 'react-swipeable';
 import { formatNumber } from '../utils/numberFormat';
 
@@ -14,6 +13,7 @@ const testimonials = [
     rating: 4.5,
     text: "Chanakya Cement Products delivered exceptional quality RCC precast walls for our residential project. The installation was quick and the durability is outstanding. Highly recommended for any construction project.",
     project: "Green Valley Residency",
+    image: "/images/testimonals/images.jpg",
   },
   {
     id: 2,
@@ -23,15 +23,17 @@ const testimonials = [
     rating: 4,
     text: "We've been using Chanakya's compound walls for over 3 years now. Their products are cost-effective, durable, and always delivered on time. The team is professional and supportive.",
     project: "Commercial Complex, Varanasi",
+    image: "/images/testimonals/men2.jpg",
   },
   {
     id: 3,
-    name: "Amit Singh",
-    company: "Singh Infrastructure",
+    name: "Amit kushwah",
+    company: "kushwah Infrastructure",
     designation: "Site Engineer",
     rating: 4,
     text: "The decorative wall panels from Chanakya transformed our office building facade. Excellent finish quality and the installation team was knowledgeable. Will definitely use their services again.",
     project: "Tech Park Phase-II",
+    image: "/images/testimonals/men1.jpg",
   },
   {
     id: 4,
@@ -41,32 +43,28 @@ const testimonials = [
     rating: 5,
     text: "Quality that speaks for itself! The precast room units saved us significant time and costs. The precision and finishing are remarkable. Chanakya is our go-to supplier for all RCC requirements.",
     project: "Hospital Complex Project",
+    image: "/images/testimonals/men4.jpg",
   },
   {
     id: 5,
-    name: "Sunita Agarwal",
+    name: "Ramesh Agrawal",
     company: "Agarwal Constructions",
     designation: "Director",
     rating: 4,
     text: "Impressed with the security wall systems for our industrial project. The strength and durability exceeded our expectations. Professional service from inquiry to installation.",
     project: "Industrial Park, Mirzapur",
+    image: "/images/testimonals/img6.jpg",
   }
 ];
+
+
 
 export function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [swipeOffset, setSwipeOffset] = useState(0);
 
-  // Format number in English (en-IN) format
-  const formatNumber = useCallback((number: number): string => {
-    try {
-      return new Intl.NumberFormat('en-IN').format(number);
-    } catch (error) {
-      console.error('Error formatting number:', error);
-      return number.toString();
-    }
-  }, []);
+  // Using imported formatNumber from '../utils/numberFormat'
   
   // Swipe handlers
   const handlers = useSwipeable({
@@ -146,11 +144,25 @@ export function Testimonials() {
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   {/* Quote Icon */}
-                  <div className="flex-shrink-0">
-                    <div className="bg-gradient-to-r from-yellow-500 to-orange-500 p-3 rounded-full">
-                      <Quote className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
+                  {/* Profile Image */}
+{/* Profile Image with fallback to initials avatar */}
+<div className="flex-shrink-0">
+  <img
+    src={testimonials[currentTestimonial].image}
+    alt={testimonials[currentTestimonial].name}
+    className="w-16 h-16 rounded-full object-cover border-2 border-yellow-500"
+    onError={(e) => {
+      const img = e.currentTarget as HTMLImageElement;
+      img.onerror = null; // prevent loop
+      const name = img.alt || 'User';
+      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=FFD166&color=000000&size=128`;
+    }}
+    loading="lazy"
+    decoding="async"
+    width={64}
+    height={64}
+  />
+</div>
 
                   {/* Testimonial Content */}
                   <div className="flex-1">
