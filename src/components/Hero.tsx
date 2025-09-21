@@ -4,6 +4,8 @@ import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useSwipeable } from 'react-swipeable';
 import React from 'react';
+import { useRef } from 'react';
+
 const heroImages = [
   "https://images.unsplash.com/photo-1724210295814-9a857e03b424?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25jcmV0ZSUyMHByZWNhc3QlMjB3YWxsJTIwY29uc3RydWN0aW9ufGVufDF8fHx8MTc1NjEyNTkyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   "https://images.unsplash.com/photo-1616621859311-19dff47afafc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjYXN0JTIwY29uY3JldGUlMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc1NjEyNTkyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -145,19 +147,19 @@ export function Hero() {
           {/* Animated Statistics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-4xl font-bold text-orange-400 mb-2">
+              <div className="text-4xl font-bold text-orange-400 mb-2" translate="no">
                 {animatedStats.experience}+
               </div>
               <div className="text-lg">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-orange-400 mb-2">
+              <div className="text-4xl font-bold text-orange-400 mb-2" translate="no">
                 {animatedStats.projects}+
               </div>
               <div className="text-lg">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-orange-400 mb-2">
+              <div className="text-4xl font-bold text-orange-400 mb-2" translate="no">
                 {animatedStats.clients}+
               </div>
               <div className="text-lg">Happy Clients</div>
@@ -181,6 +183,3 @@ export function Hero() {
     </section>
   );
 }
-
-
-

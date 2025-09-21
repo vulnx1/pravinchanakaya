@@ -1,0 +1,78 @@
+/* Responsive Typography Utilities */
+.text-responsive {
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Text wrapping for multilingual content */
+.text-wrap-balance {
+  text-wrap: balance;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Responsive container */
+.container-responsive {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Responsive spacing */
+:root {
+  --space-unit: 1rem;
+  --space-xxs: calc(0.25 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  h1 { font-size: 24pt !important; }
+  h2 { font-size: 20pt !important; }
+  h3 { font-size: 16pt !important; }
+  p, li { font-size: 12pt !important; }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
