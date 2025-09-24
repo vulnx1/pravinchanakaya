@@ -42,7 +42,7 @@ export function About() {
             serving the construction industry with innovative and durable products.
           </p>
         </div>
-
+ 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Company Information */}
           <div className={`transition-all duration-1000 delay-300 ${

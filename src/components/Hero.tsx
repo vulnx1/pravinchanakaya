@@ -93,6 +93,10 @@ export function Hero() {
             <ImageWithFallback
               src={image}
               alt={`Cement product ${index + 1}`}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' as any : 'auto' as any}
+              decoding="async"
+              sizes="100vw"
               className="w-full h-full object-cover"
             />
           </div>
