@@ -138,31 +138,23 @@ export function Testimonials() {
             <div 
               className="transition-transform duration-300 ease-out"
               style={{ transform: `translateX(${swipeOffset}px)` }}
-              {...handlers}
-            >
+              {...handlers}>
               <Card className="bg-gradient-to-br from-slate-800/80 to-gray-800/80 backdrop-blur-sm border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 shadow-2xl">
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row items-start gap-8">
                   {/* Quote Icon */}
                   {/* Profile Image */}
-{/* Profile Image with fallback to initials avatar */}
-<div className="flex-shrink-0">
-  <img
-    src={testimonials[currentTestimonial].image}
-    alt={testimonials[currentTestimonial].name}
-    className="w-16 h-16 rounded-full object-cover border-2 border-yellow-500"
-    onError={(e) => {
-      const img = e.currentTarget as HTMLImageElement;
-      img.onerror = null; // prevent loop
-      const name = img.alt || 'User';
-      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=FFD166&color=000000&size=128`;
-    }}
-    loading="lazy"
-    decoding="async"
-    width={64}
-    height={64}
-  />
-</div>
+                  <div className="flex-shrink-0">
+                    <img
+                      src={testimonials[currentTestimonial].image}
+                      alt={testimonials[currentTestimonial].name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-yellow-500"
+                      loading="lazy"
+                      decoding="async"
+                      width={64}
+                      height={64}
+                    />
+                  </div>
 
                   {/* Testimonial Content */}
                   <div className="flex-1">

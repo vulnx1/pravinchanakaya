@@ -52,24 +52,24 @@ export function Header() {
               aria-label="Email us at pravinbalda79@gmail.com"
             >
               <Mail className="w-4 h-4 flex-shrink-0" />
-              <span className="hidden sm:inline">pravinbalda79@gmail.com</span>
               <span className="sm:hidden">Email Us</span>
             </a>
-          </div>
           <div className="hidden sm:flex items-center gap-2 text-gray-300">
             <FileText className="w-4 h-4 flex-shrink-0" />
             <span>GST: Registered</span>
           </div>
         </div>
       </div>
+    </div>
 
       {/* Main Navigation */}
       <nav className="bg-gray-900 text-white py-4 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">Chanakya Cement Products</h1>
+            <a href="#home" className="flex items-center">
+              <span className="text-2xl font-bold text-white">Chanakya Cement Products</span>
+            </a>
           </div>
-
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <button

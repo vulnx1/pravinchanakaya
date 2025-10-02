@@ -1,24 +1,25 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Shield, Clock, DollarSign } from 'lucide-react';
-import { Button } from './ui/button';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { useSwipeable } from 'react-swipeable';
-import React from 'react';
-import { useRef } from 'react';
+    import { ChevronLeft, ChevronRight, Shield, Clock, DollarSign } from 'lucide-react';
+    import { Button } from './ui/button';
+    import { ImageWithFallback } from './figma/ImageWithFallback';
+    import { useSwipeable } from 'react-swipeable';
+    import React from 'react';
+    import { useRef } from 'react';
 
-const heroImages = [
-  "https://images.unsplash.com/photo-1724210295814-9a857e03b424?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25jcmV0ZSUyMHByZWNhc3QlMjB3YWxsJTIwY29uc3RydWN0aW9ufGVufDF8fHx8MTc1NjEyNTkyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1616621859311-19dff47afafc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVjYXN0JTIwY29uY3JldGUlMjBtYW51ZmFjdHVyaW5nfGVufDF8fHx8MTc1NjEyNTkyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1568621422837-a343133e2bb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZW1lbnQlMjBmYWN0b3J5JTIwcHJvZHVjdGlvbnxlbnwxfHx8fDE3NTYxMjU5MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-];
+const img12 = new URL('../assets/images/img12.png', import.meta.url).href;
+const img13 = new URL('../assets/images/img13.png', import.meta.url).href;
+const img3 = new URL('../assets/images/img3.png', import.meta.url).href;
+const img10 = new URL('../assets/images/img10.png', import.meta.url).href;
 
-export function Hero() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [animatedStats, setAnimatedStats] = useState({
-    experience: 0,
-    projects: 0,
-    clients: 0
-  });
+const heroImages = [img3, img12, img13, img10];
+
+  export function Hero() {
+    const [currentImage, setCurrentImage] = useState(0);
+    const [animatedStats, setAnimatedStats] = useState({
+      experience: 0,
+      projects: 0,
+      clients: 0
+    });
   
   // Shared styles for CTA buttons to ensure identical color and sizing
   const ctaButtonClass = "bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3";
