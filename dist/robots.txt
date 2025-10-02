@@ -1,0 +1,5 @@
+# robots.txt for https://chanakyacement.com/
+User-agent: *
+Allow: /
+
+Sitemap: https://chanakyacement.com/sitemap.xml
