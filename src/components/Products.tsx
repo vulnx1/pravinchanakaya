@@ -237,7 +237,7 @@ export function Products() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
-              onClick={() => window.open('tel:919151577755', '_blank')}
+              onClick={() => window.open('tel:9151577755', '_blank')}
               className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50"
             >
               <Phone className="w-4 h-4 mr-2" />
