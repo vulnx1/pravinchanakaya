@@ -175,7 +175,7 @@ export function FAQ() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button 
-                onClick={() => window.open('tel:919151577755', '_blank')}
+                onClick={() => window.open('tel:9151577755', '_blank')}
                 className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50"
               >
                 Call Us Now

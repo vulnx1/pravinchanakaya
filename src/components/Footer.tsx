@@ -117,13 +117,13 @@ export function Footer() {
                 <Phone className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
                 <div className="text-gray-300 text-sm">
                   <p>
-                    <a href="tel:919151577755" className="hover:text-orange-400 transition-colors">
-                      91515 77755
+                    <a href="tel:9151577755" className="hover:text-orange-400 transition-colors">
+                      9151577755
                     </a>
                   </p>
                   <p>
-                    <a href="tel:918383048884" className="hover:text-orange-400 transition-colors">
-                      8383 048884
+                    <a href="tel:8383048884" className="hover:text-orange-400 transition-colors">
+                      8383048884
                     </a>
                   </p>
                 </div>

@@ -79,7 +79,7 @@ export function Products() {
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: number]: number}>({});
 
   const handleEnquiry = (productName: string) => {
-    const phoneNumber = "919151577755";
+    const phoneNumber = "9151577755";
     const message = `Hi, I'm interested in ${productName}. Please provide more details.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };

@@ -3,6 +3,7 @@
       "name": "chanakya-cement-products-website",
       "version": "0.1.0",
       "private": true,
+      "engines": { "node": ">=18.17" },
       "dependencies": {
             "@emailjs/browser": "^4.4.1",
             "@radix-ui/react-accordion": "^1.2.3",
@@ -59,4 +60,4 @@
             "build": "vite build",
             "preview": "vite preview"
       }
-}
+  }
